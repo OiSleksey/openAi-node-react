@@ -1,0 +1,32 @@
+@import '../../sass/media-queires/media';
+@import '../../sass/variables/mixins';
+@import '../../sass/variables/colors';
+@import '../../sass/media-queires/media';
+
+.chat {
+  padding: 0;
+  margin: 0;
+  flex-wrap: nowrap;
+  position: relative;
+  @include respond(phone-first) {
+    @include flex-Vcenter-Hcenter;
+  }
+  background: $background-details;
+  border-radius: 1rem;
+  width: 79.4rem;
+  min-height: 43.4rem;
+
+  &__main {
+    // width: 65.6rem;
+
+    // display: grid;
+    // grid-template-columns: repeat(16, 1fr);
+    // grid-template-rows: repeat(14, 1fr);
+    // border-radius: 10rem;
+    // border-bottom-left-radius: 16rem;
+    // padding: 0;
+    // @include respond(phone-first);
+    // height: auto;
+    // width: 90%;
+  }
+}

@@ -1,0 +1,85 @@
+@import '../sass/media-queires/media';
+@import '../sass/variables/colors';
+@import '../sass/variables/mixins';
+
+* {
+  box-sizing: border-box;
+  // user-select: none
+}
+
+html {
+  font-size: 62.5%;
+  @include respond(tab-port-first) {
+    font-size: 50%;
+  }
+  @include respond(tab-port-second) {
+    font-size: 40%;
+  }
+  @include respond(tab-port-third) {
+    font-size: 35%;
+  }
+  @include respond(phone-first) {
+    font-size: 55%;
+  }
+  // @include respond(phone-second)
+  //     font-size: 30%
+}
+
+body {
+  min-height: 100%;
+  background-color: $background-body;
+  background: $background-linear-body;
+}
+
+.container {
+  @include flex-Vcenter-Hcenter;
+  &__main {
+    // padding: 10rem 0;
+    font-size: 2rem;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 4;
+  }
+}
+
+// .app {
+//   text-align: center;
+// }
+
+// .app-logo {
+//   height: 40vmin;
+//   pointer-events: none;
+// }
+
+// @media (prefers-reduced-motion: no-preference) {
+//   .app-logo {
+//     animation: app-logo-spin infinite 20s linear;
+//   }
+// }
+
+// .app-header {
+//   background-color: #282c34;
+//   min-height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   font-size: calc(10px + 2vmin);
+//   color: white;
+// }
+
+// .app-link {
+//   color: #61dafb;
+// }
+
+// @keyframes app-logo-spin {
+//   from {
+//     transform: rotate(0deg);
+//   }
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
