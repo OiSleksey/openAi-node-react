@@ -14,8 +14,18 @@ export const postRequest = async message => {
         },
       }
     );
+    console.log(response.data.message);
     return response.data.message;
   } catch (error) {
     console.error(error);
   }
 };
+
+// export const postRequest = message => {
+//   return new Promise(function (res, rej) {
+//     res('response');
+//   });
+// };
+
+// const postmessage = await postRequest('Hello');
+// console.log(postmessage);

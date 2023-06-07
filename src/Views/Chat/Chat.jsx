@@ -1,20 +1,29 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import './Chat.scss';
-import { postRequest } from '../../api/postRequest';
+import { postOpenAiDispatch } from '../../redux/middleware/postChatThunk';
+import { replyFromChat } from '../../redux/selectors/chatWithAi.selector';
+// import { postRequest } from '../../api/postOpenAi';
 
-const Chat = () => {
+const Chat = ({ postMessage, replyMessage }) => {
   const [message, setMessage] = useState('');
-  const [response, setResponse] = useState('');
+  //   if (!replyMessage) return null;
+
+  //   const [response, setResponse] = useState(replyMessage);
+  //   const responce = replyMessage[0];
+
   // useEffect(() => {
   //   fetchData();
   // }, []);
-
+  console.log(replyMessage);
   const handleSubmit = async e => {
     e.preventDefault();
     console.log(message);
-    const postMessage = await postRequest(message);
     console.log(postMessage);
-    setResponse(postMessage);
+    postMessage(message);
+    // const postMessage = await postRequest(message);
+    // console.log(postMessage);
+    // setResponse(postMessage);
   };
 
   return (
@@ -27,10 +36,23 @@ const Chat = () => {
           ></textarea>
           <button type="submit">Submit</button>
         </form>
-        <div>{response}</div>
+        <div style={{ color: 'white' }}>{replyMessage}</div>
       </div>
     </div>
   );
 };
 
-export default Chat;
+const mapState = state => {
+  return {
+    replyMessage: replyFromChat(state),
+    //   weatherData: state.weatherData,
+  };
+};
+const mapDispatch = {
+  postMessage: postOpenAiDispatch,
+  // getLocationWeather: getLocationWeatherDispatch,
+  // getTime: getTimeDateNow,
+  // startLoadPage: loadPage,
+  // setMediaSize: mobileSize,
+};
+export default connect(mapState, mapDispatch)(Chat);
