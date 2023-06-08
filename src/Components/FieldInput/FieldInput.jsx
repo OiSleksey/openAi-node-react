@@ -10,6 +10,7 @@ const FieldInput = ({ postMessage, replyMessage }) => {
   const handleSubmit = e => {
     e.preventDefault();
     postMessage(message);
+    setMessage('');
   };
 
   const handleChange = e => {
@@ -25,7 +26,6 @@ const FieldInput = ({ postMessage, replyMessage }) => {
 
   return (
     <div className="field-input mb-3 ">
-      <div style={{ color: 'white' }}>{replyMessage}</div>
       <form onSubmit={handleSubmit}>
         <div className="field-input__form-box d-flex justify-content-end">
           <div className="field-input__textarea ">
@@ -49,16 +49,16 @@ const FieldInput = ({ postMessage, replyMessage }) => {
   );
 };
 
-const mapState = state => {
-  return {
-    replyMessage: replyFromChat(state),
-  };
-};
+// const mapState = state => {
+//   return {
+//     replyMessage: replyFromChat(state),
+//   };
+// };
 const mapDispatch = {
   postMessage: postOpenAiDispatch,
 };
 
-export default connect(mapState, mapDispatch)(FieldInput);
+export default connect(null, mapDispatch)(FieldInput);
 
 {
   /* <p>

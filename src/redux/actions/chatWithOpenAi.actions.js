@@ -4,7 +4,7 @@ export const QUESTION_FOR_CHAT = 'QUESTION_FOR_CHAT';
 export const REPLY_FROM_CHAT = 'REPLY_FROM_CHAT';
 
 export const questionForChat = data => {
-  console.log(data);
+  // console.log(data);
   return {
     type: QUESTION_FOR_CHAT,
     payload: {

@@ -30,7 +30,7 @@ export const chatReducer = (state = initialState, action) => {
   switch (action.type) {
     case QUESTION_FOR_CHAT: {
       const newQuestion = state.questions.concat(action.payload.data);
-      console.log(newQuestion);
+      // console.log(newQuestion);
       return {
         ...state,
         questions: newQuestion,
@@ -38,7 +38,7 @@ export const chatReducer = (state = initialState, action) => {
     }
     case REPLY_FROM_CHAT: {
       const newReply = state.replies.concat(action.payload.data);
-      console.log(newReply);
+      // console.log(newReply);
       return {
         ...state,
         replies: newReply,
