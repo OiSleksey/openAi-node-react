@@ -3,12 +3,13 @@
 .field-input {
   //   width: 90%;
   &__form-box {
-    background-color: red;
+    background-color: #5fd9c2;
     border-radius: 0.5rem;
   }
   &__textarea {
     flex: 0 0 90%;
     & textarea {
+      font-size: 1.5rem;
       border-radius: 0.6rem;
       width: 100%;
       // max-height: 20rem;
@@ -30,4 +31,8 @@
   //   /* Заборона зміни розміру вводу */
   //   white-space: pre-wrap; /* Дозволяє перенос рядків та збільшує висоту */
   //   overflow: hidden; /* Ховає зайвий текст, якщо він не поміщається */
+}
+
+.btn-submit {
+  background-color: #fef13a !important;
 }

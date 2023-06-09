@@ -38,6 +38,6 @@ export const arrPostGetMessage = state => {
     message,
     arrReplies[index],
   ]);
-  console.log(arrPostGet);
+  // console.log(arrPostGet);
   return arrPostGet;
 };

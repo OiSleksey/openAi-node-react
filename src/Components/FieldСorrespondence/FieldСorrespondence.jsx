@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createRef } from 'react';
 import { connect } from 'react-redux';
 import './FieldСorrespondence.scss';
 import {
@@ -9,35 +9,21 @@ import {
 import PostMessage from '../PostMessage/PostMessage';
 import GetMessage from '../GetMessage/GetMessage';
 
-// const FieldСorrespondence = ({ replyMessage }) => {
-//   //   const [message, setMessage] = useState('');
-
-//   //   const adjuctTextareaHeight = e => {
-//   //     const textarea = e.target;
-//   //     textarea.style.height = 'auto';
-//   //     textarea.style.height = textarea.scrollHeight + 'px';
-//   //   };
-
-//   return (
-//     <div className="field-corespodence mb-3 ">
-//       <div style={{ color: 'black' }}>{replyMessage}</div>
-//     </div>
-//   );
-// };
 const FieldСorrespondence = ({ isMessage, arrMesseges }) => {
-  //   const [message, setMessage] = useState('');
+  const myRef = createRef();
+  const getScrollHeightBody = element => {
+    const scrollHeight = element.current.scrollHeight;
+    return scrollHeight;
+  };
 
-  //   const adjuctTextareaHeight = e => {
-  //     const textarea = e.target;
-  //     textarea.style.height = 'auto';
-  //     textarea.style.height = textarea.scrollHeight + 'px';
-  //   };
+  const scrollToPosition = () => {
+    const scrollHeight = getScrollHeightBody(myRef);
+    myRef.current.scrollTop = scrollHeight;
+  };
+  useEffect(() => {
+    scrollToPosition();
+  }, [arrMesseges]);
 
-  // $(document).ready(function(){
-  //   $('#action_menu_btn').click(function(){
-  //     $('.action_menu').toggle();
-  //   });
-  //     });
   const styleBody = arrMesseges ? { padding: '10px' } : { padding: '0' };
   const items = arrMesseges
     ? arrMesseges.map((element, index) => {
@@ -55,18 +41,18 @@ const FieldСorrespondence = ({ isMessage, arrMesseges }) => {
         );
       })
     : null;
-  console.log(items);
+
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   return (
     <div className="field-coresspodence mb-3">
-      <div className="field-coresspodence__body msg-cotainer" style={styleBody}>
+      <div
+        ref={myRef}
+        onClick={scrollToPosition}
+        className="field-coresspodence__body msg-cotainer"
+        style={styleBody}
+      >
         {items}
-        {/* <PostMessage question={'hello'} />
-        <GetMessage reply={'response'} />
-        <PostMessage question={'hello'} />
-        <GetMessage reply={'response'} />
-        <PostMessage question={'hello'} />
-        <GetMessage reply={'response'} /> */}
       </div>
     </div>
   );
@@ -166,3 +152,55 @@ export default connect(mapState, null)(FieldСorrespondence);
           </div>
         </div> */
 }
+
+// import React, { useState, useRef } from 'react';
+
+// const MyComponent = () => {
+//   const [scrollPosition, setScrollPosition] = useState(0);
+//   const myRef = useRef();
+
+//   const handleScroll = () => {
+//     setScrollPosition(myRef.current.scrollTop);
+//   };
+
+//   const smoothScrollTo = (position, duration) => {
+//     const startTime = performance.now();
+//     const startPosition = myRef.current.scrollTop;
+//     const distance = position - startPosition;
+
+//     const scrollStep = (timestamp) => {
+//       const currentTime = timestamp - startTime;
+//       const easing = easeOutQuad(currentTime / duration);
+//       const scrollToPosition = startPosition + distance * easing;
+
+//       myRef.current.scrollTop = scrollToPosition;
+
+//       if (currentTime < duration) {
+//         requestAnimationFrame(scrollStep);
+//       } else {
+//         setScrollPosition(position);
+//       }
+//     };
+
+//     requestAnimationFrame(scrollStep);
+//   };
+
+//   const easeOutQuad = (t) => {
+//     return t * (2 - t);
+//   };
+
+//   const scrollToPosition = (position) => {
+//     smoothScrollTo(position, 500); // 500 мс - тривалість плавної прокрутки
+//   };
+
+//   return (
+//     <div ref={myRef} style={{ overflow: 'auto', height: '300px' }} onScroll={handleScroll}>
+//       <p>Зміст елемента</p>
+//       <button onClick={() => scrollToPosition(200)}>Прокрутити до 200</button>
+//       <button onClick={() => scrollToPosition(100)}>Прокрутити до 100</button>
+//       <p>Поточна позиція: {scrollPosition}</p>
+//     </div>
+//   );
+// };
+
+// export default MyComponent;

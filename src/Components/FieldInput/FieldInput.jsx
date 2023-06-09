@@ -9,13 +9,15 @@ const FieldInput = ({ postMessage, replyMessage }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    if (message === '') return;
     postMessage(message);
     setMessage('');
   };
 
   const handleChange = e => {
     e.preventDefault();
-    setMessage(e.target.value);
+    const value = e.target.value;
+    setMessage(value);
   };
 
   const adjuctTextareaHeight = e => {
@@ -24,9 +26,20 @@ const FieldInput = ({ postMessage, replyMessage }) => {
     textarea.style.height = textarea.scrollHeight + 'px';
   };
 
+  const minTextereaHeight = e => {
+    const form = e.target;
+    const textarea = form.querySelector('textarea');
+    textarea.style.height = '4.38rem';
+  };
+
   return (
     <div className="field-input mb-3 ">
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={e => {
+          handleSubmit(e);
+          minTextereaHeight(e);
+        }}
+      >
         <div className="field-input__form-box d-flex justify-content-end">
           <div className="field-input__textarea ">
             <textarea
@@ -39,7 +52,7 @@ const FieldInput = ({ postMessage, replyMessage }) => {
             ></textarea>
           </div>
           <div className="field-input__submit">
-            <button className="btn btn-warning " type="submit">
+            <button className="btn btn-warning btn-submit" type="submit">
               Submit
             </button>
           </div>
