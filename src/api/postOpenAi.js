@@ -23,7 +23,7 @@ const url = 'http://localhost:4001/';
 
 export const postRequest = message => {
   return new Promise(function (res, rej) {
-    res('response');
+    setTimeout(() => res('response'), 2000);
   });
 };
 

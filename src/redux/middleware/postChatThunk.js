@@ -3,9 +3,11 @@ import * as actions from '../actions/chatWithOpenAi.actions';
 
 export const postOpenAiDispatch = message => {
   return function (dispatch) {
+    dispatch(actions.canEnterRequest(false));
     dispatch(actions.questionForChat(message));
     postRequest(message).then(data => {
       dispatch(actions.replyFromChat(data));
+      dispatch(actions.canEnterRequest(true));
     });
   };
 };

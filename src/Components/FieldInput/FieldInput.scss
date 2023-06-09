@@ -23,7 +23,11 @@
     flex: 0 0 10%;
     width: clamp(5rem, 75%, 8rem);
     @include flex-Vcenter-Hcenter;
-    & button {
+  }
+  &__btn-submit {
+    background-color: #fef13a !important;
+    &_active {
+      background-color: #c1c1c1 !important;
     }
   }
 }
@@ -34,5 +38,4 @@
 }
 
 .btn-submit {
-  background-color: #fef13a !important;
 }

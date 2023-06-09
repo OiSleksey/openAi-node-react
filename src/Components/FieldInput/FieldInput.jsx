@@ -4,12 +4,12 @@ import './FieldInput.scss';
 import { postOpenAiDispatch } from '../../redux/middleware/postChatThunk';
 import { replyFromChat } from '../../redux/selectors/chatWithAi.selector';
 
-const FieldInput = ({ postMessage, replyMessage }) => {
+const FieldInput = ({ postMessage, replyMessage, canEnterMessage }) => {
   const [message, setMessage] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (message === '') return;
+    if (message === '' || !canEnterMessage) return;
     postMessage(message);
     setMessage('');
   };
@@ -32,6 +32,10 @@ const FieldInput = ({ postMessage, replyMessage }) => {
     textarea.style.height = '4.38rem';
   };
 
+  const classBtn = canEnterMessage
+    ? 'btn field-input__btn-submit'
+    : 'btn field-input__btn-submit field-input__btn-submit_active';
+
   return (
     <div className="field-input mb-3 ">
       <form
@@ -52,7 +56,7 @@ const FieldInput = ({ postMessage, replyMessage }) => {
             ></textarea>
           </div>
           <div className="field-input__submit">
-            <button className="btn btn-warning btn-submit" type="submit">
+            <button className={classBtn} type="submit">
               Submit
             </button>
           </div>
@@ -62,16 +66,16 @@ const FieldInput = ({ postMessage, replyMessage }) => {
   );
 };
 
-// const mapState = state => {
-//   return {
-//     replyMessage: replyFromChat(state),
-//   };
-// };
+const mapState = state => {
+  return {
+    canEnterMessage: state.chatWithAi.canEnterMessage,
+  };
+};
 const mapDispatch = {
   postMessage: postOpenAiDispatch,
 };
 
-export default connect(null, mapDispatch)(FieldInput);
+export default connect(mapState, mapDispatch)(FieldInput);
 
 {
   /* <p>

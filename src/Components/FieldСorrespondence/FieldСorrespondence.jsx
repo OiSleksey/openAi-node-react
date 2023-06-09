@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createRef } from 'react';
+import React, { useState, useEffect, createRef, memo } from 'react';
 import { animateScroll as scroll } from 'react-scroll';
 import { connect } from 'react-redux';
 import './FieldСorrespondence.scss';
@@ -7,6 +7,7 @@ import {
   isPostMessage,
   arrPostGetMessage,
 } from '../../redux/selectors/chatWithAi.selector';
+import { canEnterRequest } from '../../redux/actions/chatWithOpenAi.actions';
 import PostMessage from '../PostMessage/PostMessage';
 import GetMessage from '../GetMessage/GetMessage';
 
@@ -25,6 +26,7 @@ const FieldСorrespondence = ({ isMessage, arrMesseges }) => {
   }, [arrMesseges]);
 
   const styleBody = arrMesseges ? { padding: '10px' } : { padding: '0' };
+
   const items = arrMesseges
     ? arrMesseges.map((element, index) => {
         return (
@@ -63,10 +65,18 @@ const mapState = state => {
   };
 };
 // const mapDispatch = {
-//   postMessage: postOpenAiDispatch,
+//   setEnterText: canEnterRequest,
 // };
 
-export default connect(mapState, null)(FieldСorrespondence);
+// export default connect(mapState, mapDispatch)(FieldСorrespondence);
+function propsAreEqual(prevProps, nextProps) {
+  const boolValue = prevProps.arrMesseges === nextProps.arrMesseges;
+  return boolValue;
+}
+export default connect(
+  mapState,
+  null
+)(memo(FieldСorrespondence, propsAreEqual));
 
 {
   /* <p>

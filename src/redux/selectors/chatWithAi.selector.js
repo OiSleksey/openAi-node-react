@@ -29,8 +29,10 @@ export const arrPostGetMessage = state => {
     !state.chatWithAi ||
     !state.chatWithAi.questions ||
     state.chatWithAi.questions < 1
-  )
+  ) {
+    console.log('selector null');
     return null;
+  }
 
   const arrQuestions = state.chatWithAi.questions;
   const arrReplies = state.chatWithAi.replies;
@@ -38,6 +40,6 @@ export const arrPostGetMessage = state => {
     message,
     arrReplies[index],
   ]);
-  // console.log(arrPostGet);
+  console.log('selector arr');
   return arrPostGet;
 };
