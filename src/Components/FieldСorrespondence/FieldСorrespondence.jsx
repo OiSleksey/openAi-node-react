@@ -1,4 +1,5 @@
 import React, { useState, useEffect, createRef } from 'react';
+import { animateScroll as scroll } from 'react-scroll';
 import { connect } from 'react-redux';
 import './FieldСorrespondence.scss';
 import {
@@ -10,18 +11,17 @@ import PostMessage from '../PostMessage/PostMessage';
 import GetMessage from '../GetMessage/GetMessage';
 
 const FieldСorrespondence = ({ isMessage, arrMesseges }) => {
-  const myRef = createRef();
-  const getScrollHeightBody = element => {
-    const scrollHeight = element.current.scrollHeight;
-    return scrollHeight;
+  const scrollToBottom = () => {
+    scroll.scrollToBottom({
+      duration: 1000,
+      delay: 100,
+      smooth: 'easeInOutQuart',
+      containerId: 'scroll-container',
+    });
   };
 
-  const scrollToPosition = () => {
-    const scrollHeight = getScrollHeightBody(myRef);
-    myRef.current.scrollTop = scrollHeight;
-  };
   useEffect(() => {
-    scrollToPosition();
+    scrollToBottom();
   }, [arrMesseges]);
 
   const styleBody = arrMesseges ? { padding: '10px' } : { padding: '0' };
@@ -42,15 +42,12 @@ const FieldСorrespondence = ({ isMessage, arrMesseges }) => {
       })
     : null;
 
-  const [scrollPosition, setScrollPosition] = useState(0);
-
   return (
     <div className="field-coresspodence mb-3">
       <div
-        ref={myRef}
-        onClick={scrollToPosition}
         className="field-coresspodence__body msg-cotainer"
         style={styleBody}
+        id="scroll-container"
       >
         {items}
       </div>
@@ -78,129 +75,62 @@ export default connect(mapState, null)(FieldСorrespondence);
           </p> */
 }
 
-{
-  /* <div className="d-flex justify-content-end mb-4">
-          <div className="msg_cotainer_send">
-            Hi Khalid i am good tnx how about you?
-            <span className="msg_time_send">8:55 AM, Today</span>
-          </div>
-          <div className="img_cont_msg">
-            <img
-              src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Image-HD.png"
-              className="rounded-circle user_img_msg"
-            />
-          </div>
-        </div>
-        <div className="d-flex justify-content-start mb-4">
-          <div className="img_cont_msg">
-            <img
-              src="https://storage.somehow.com/o%2Fpage%252Fopenai%252Favatar%3Falt%3Dmedia%26token%3D4a9c8041-6e60-4f29-a55b-2c209b76aceb"
-              className="rounded-circle user_img_msg"
-            />
-          </div>
-          <div className="msg_cotainer">
-            I am good too, thank you for your chat template
-            <span className="msg_time">9:00 AM, Today</span>
-          </div>
-        </div>
-        <div className="d-flex justify-content-end mb-4">
-          <div className="msg_cotainer_send">
-            You are welcome
-            <span className="msg_time_send">9:05 AM, Today</span>
-          </div>
-          <div className="img_cont_msg">
-            <img
-              src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Image-HD.png"
-              className="rounded-circle user_img_msg"
-            />
-          </div>
-        </div>
-        <div className="d-flex justify-content-start mb-4">
-          <div className="img_cont_msg">
-            <img
-              src="https://storage.somehow.com/o%2Fpage%252Fopenai%252Favatar%3Falt%3Dmedia%26token%3D4a9c8041-6e60-4f29-a55b-2c209b76aceb"
-              className="rounded-circle user_img_msg"
-            />
-          </div>
-          <div className="msg_cotainer">
-            I am looking for your next templates
-            <span className="msg_time">9:07 AM, Today</span>
-          </div>
-        </div>
-        <div className="d-flex justify-content-end mb-4">
-          <div className="msg_cotainer_send">
-            Ok, thank you have a good day
-            <span className="msg_time_send">9:10 AM, Today</span>
-          </div>
-          <div className="img_cont_msg">
-            <img
-              src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Image-HD.png"
-              className="rounded-circle user_img_msg"
-            />
-          </div>
-        </div>
-        <div className="d-flex justify-content-start mb-4">
-          <div className="img_cont_msg">
-            <img
-              src="https://storage.somehow.com/o%2Fpage%252Fopenai%252Favatar%3Falt%3Dmedia%26token%3D4a9c8041-6e60-4f29-a55b-2c209b76aceb"
-              className="rounded-circle user_img_msg"
-            />
-          </div>
-          <div className="msg_cotainer">
-            Bye, see you
-            <span className="msg_time">9:12 AM, Today</span>
-          </div>
-        </div> */
-}
+//Імпліментація прокрутки завдяки JS . Досконало зробити не вийшло
 
-// import React, { useState, useRef } from 'react';
+// const myRef = createRef();
+// const [scrollPosition, setScrollPosition] = useState(0);
 
-// const MyComponent = () => {
-//   const [scrollPosition, setScrollPosition] = useState(0);
-//   const myRef = useRef();
-
-//   const handleScroll = () => {
-//     setScrollPosition(myRef.current.scrollTop);
-//   };
-
-//   const smoothScrollTo = (position, duration) => {
-//     const startTime = performance.now();
-//     const startPosition = myRef.current.scrollTop;
-//     const distance = position - startPosition;
-
-//     const scrollStep = (timestamp) => {
-//       const currentTime = timestamp - startTime;
-//       const easing = easeOutQuad(currentTime / duration);
-//       const scrollToPosition = startPosition + distance * easing;
-
-//       myRef.current.scrollTop = scrollToPosition;
-
-//       if (currentTime < duration) {
-//         requestAnimationFrame(scrollStep);
-//       } else {
-//         setScrollPosition(position);
-//       }
-//     };
-
-//     requestAnimationFrame(scrollStep);
-//   };
-
-//   const easeOutQuad = (t) => {
-//     return t * (2 - t);
-//   };
-
-//   const scrollToPosition = (position) => {
-//     smoothScrollTo(position, 500); // 500 мс - тривалість плавної прокрутки
-//   };
-
-//   return (
-//     <div ref={myRef} style={{ overflow: 'auto', height: '300px' }} onScroll={handleScroll}>
-//       <p>Зміст елемента</p>
-//       <button onClick={() => scrollToPosition(200)}>Прокрутити до 200</button>
-//       <button onClick={() => scrollToPosition(100)}>Прокрутити до 100</button>
-//       <p>Поточна позиція: {scrollPosition}</p>
-//     </div>
-//   );
+// const easeOutQuad = t => {
+//   return t;
 // };
 
-// export default MyComponent;
+// const smoothScrollTo = (distance, duration, element) => {
+//   const startTime = performance.now();
+//   const scrollStep = timestamp => {
+//     const currentTime = timestamp - startTime < 0 ? 0 : timestamp - startTime;
+//     // console.log('timestamp ' + timestamp);
+//     // console.log('currentTime ' + currentTime);
+//     // console.log('empty ');
+
+//     const easing = easeOutQuad(currentTime / duration) + 0.8;
+//     console.log('distance ' + easing);
+//     const scrollToPosition = distance * easing;
+//     // console.log('scrollToPosition ' + easing);
+//     element.scrollTop = scrollToPosition;
+//     if (currentTime < duration) {
+//       requestAnimationFrame(scrollStep);
+//     } else {
+//       setScrollPosition(distance);
+//     }
+//   };
+//   requestAnimationFrame(scrollStep);
+// };
+
+// //
+// const getScrollTop = element => {
+//   const scrollTop = element.scrollTop;
+//   return scrollTop;
+// };
+
+// const getScrollHeightBody = element => {
+//   const scrollHeight = element.scrollHeight;
+//   return scrollHeight;
+// };
+// const getClientHeightBody = element => {
+//   const clientHeight = element.clientHeight;
+//   return clientHeight;
+// };
+
+// const scrollToPosition = () => {
+//   const scrollHeight = getScrollHeightBody(myRef.current) || 0;
+//   const scrollTop = getScrollTop(myRef.current) || 0;
+//   const clientHeight = getClientHeightBody(myRef.current) || 0;
+//   const difference = scrollHeight - scrollTop - 300;
+//   // console.log('scrollTop ' + scrollTop);
+//   console.log('scrollHeight ' + Math.round(scrollHeight / (scrollTop + 1)));
+//   // smoothScrollTo(scrollHeight, 2500, myRef.current);
+// };
+
+// useEffect(() => {
+//   scrollToPosition();
+// }, [arrMesseges]);
