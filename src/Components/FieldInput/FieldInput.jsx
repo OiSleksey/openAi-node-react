@@ -1,16 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import './FieldInput.scss';
 import { openAiDispatch } from '../../redux/middleware/postChatThunk';
-import { replyFromChat } from '../../redux/selectors/chatWithAi.selector';
+import { inputHeight } from '../../redux/actions/heightComponents.actions';
 
-const FieldInput = ({ postMessage, replyMessage, canEnterMessage }) => {
+const FieldInput = ({ postMessage, canEnterMessage, getInputHeight }) => {
+  const myRef = useRef();
+
+  const changeHeight = () => {
+    const clientHeight = myRef.current.clientHeight;
+    getInputHeight(clientHeight);
+  };
+
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver(changeHeight);
+    if (myRef.current) {
+      resizeObserver.observe(myRef.current);
+    }
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, []);
   const [message, setMessage] = useState('');
+
+  const minTextereaHeight = e => {
+    const form = e.target;
+    const textarea = form.querySelector('textarea');
+    textarea.style.height = '3.24rem';
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (message === '' || !canEnterMessage) return;
-    postMessage(message);
+    const trimMessage = message.trim();
+    if (trimMessage === '' || !canEnterMessage) return;
+    minTextereaHeight(e);
+    postMessage(trimMessage);
     setMessage('');
   };
 
@@ -26,24 +51,13 @@ const FieldInput = ({ postMessage, replyMessage, canEnterMessage }) => {
     textarea.style.height = textarea.scrollHeight + 'px';
   };
 
-  const minTextereaHeight = e => {
-    const form = e.target;
-    const textarea = form.querySelector('textarea');
-    textarea.style.height = '3.24rem';
-  };
-
   const classBtn = canEnterMessage
     ? 'btn field-input__btn-submit'
     : 'btn field-input__btn-submit field-input__btn-submit_active';
 
   return (
-    <div className="field-input mb-3 ">
-      <form
-        onSubmit={e => {
-          handleSubmit(e);
-          minTextereaHeight(e);
-        }}
-      >
+    <div className="field-input " onChange={changeHeight} ref={myRef}>
+      <form onSubmit={handleSubmit}>
         <div className="field-input__form-box d-flex justify-content-end">
           <div className="field-input__textarea ">
             <textarea
@@ -73,6 +87,7 @@ const mapState = state => {
 };
 const mapDispatch = {
   postMessage: openAiDispatch,
+  getInputHeight: inputHeight,
 };
 
 export default connect(mapState, mapDispatch)(FieldInput);

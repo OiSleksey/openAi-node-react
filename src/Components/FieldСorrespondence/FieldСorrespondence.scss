@@ -10,12 +10,16 @@
 .field-coresspodence {
   border-radius: 15px;
   background-color: rgba(240, 240, 240, 0.4);
+  margin: 5px 0;
   &__body {
     // background: rgb(52, 197, 107);
+    // flex: 1 0;
     overflow-y: auto;
     max-height: 30rem;
+    // min-height: 10rem;
     margin-right: 0.7rem;
     padding: 1rem;
+
     // transition: all 1.5s ease-out 1s;
 
     &::-webkit-scrollbar-track {
@@ -37,25 +41,6 @@
     }
   }
 }
-
-// .type_msg {
-//   background-color: rgba(0, 0, 0, 0.3) !important;
-//   border: 0 !important;
-//   color: white !important;
-//   height: 60px !important;
-//   overflow-y: auto;
-// }
-// .type_msg:focus {
-//   box-shadow: none !important;
-//   outline: 0px !important;
-// }
-// .attach_btn {
-//   border-radius: 15px 0 0 15px !important;
-//   background-color: rgba(0, 0, 0, 0.3) !important;
-//   border: 0 !important;
-//   color: white !important;
-//   cursor: pointer;
-// }
 
 .user__img-cont {
   height: 40px;

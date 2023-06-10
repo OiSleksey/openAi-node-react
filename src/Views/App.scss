@@ -37,11 +37,15 @@ body {
     // padding: 10rem 0;
     font-size: 2rem;
     min-height: 100vh;
+    // max-width: 79.4rem;
+    // min-width: 85.4rem;
+    width: clamp(85.4rem, 75%, 20rem);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
-    z-index: 4;
+    // z-index: 4;
   }
 }
 

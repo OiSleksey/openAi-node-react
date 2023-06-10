@@ -1,0 +1,16 @@
+@import '../../sass/variables/colors';
+
+footer {
+  width: 100%;
+}
+.footer-cont {
+  width: 100%;
+  padding: 1rem 2rem;
+  text-align: center;
+  background: $background-details;
+  color: white;
+  border-radius: 1rem;
+  &__copyright {
+    text-align: right;
+  }
+}

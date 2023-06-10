@@ -7,6 +7,7 @@ import {
 import { configureStore } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 import { chatReducer } from './reducers/chatWithOpenAi.reducer';
+import { heightComponentsReducer } from './reducers/heightComponents.reducer';
 import {
   persistStore,
   persistReducer,
@@ -22,6 +23,7 @@ import storage from 'redux-persist/lib/storage';
 
 const allReducers = combineReducers({
   chatWithAi: chatReducer,
+  heightComponents: heightComponentsReducer,
   // hourWeather: selectedHourOfDayReducer,
   // isUI: stateUIReducer,
   // weatherData: locationWeatherReducer,

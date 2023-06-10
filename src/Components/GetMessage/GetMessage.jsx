@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import './GetMessage.scss';
+import Loading from '../Loading/Loading';
 // import { replyFromChat } from '../../redux/selectors/chatWithAi.selector';
 
 const GetMessage = ({ replyMessage, reply, time }) => {
@@ -15,7 +16,8 @@ const GetMessage = ({ replyMessage, reply, time }) => {
         />
       </div>
       <div className="msg-get__content">
-        {reply ? reply : 'Loading...'}
+        {reply ? reply : <Loading />}
+
         <span className="msg-get__time">{time}</span>
       </div>
     </div>

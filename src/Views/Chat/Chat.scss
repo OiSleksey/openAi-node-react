@@ -8,25 +8,51 @@
   margin: 0;
   flex-wrap: nowrap;
   position: relative;
+  margin-bottom: 0.3rem;
   @include respond(phone-first) {
     @include flex-Vcenter-Hcenter;
   }
   background: $background-details;
   border-radius: 1rem;
-  width: 79.4rem;
-  height: 43.4rem;
-
+  // width: 79.4rem;
+  width: 100%;
+  height: 74vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  &__accordion {
+    padding: 8px;
+    padding-bottom: 0;
+    margin-bottom: auto;
+  }
   &__main {
-    // width: 65.6rem;
-
-    // display: grid;
-    // grid-template-columns: repeat(16, 1fr);
-    // grid-template-rows: repeat(14, 1fr);
-    // border-radius: 10rem;
-    // border-bottom-left-radius: 16rem;
-    // padding: 0;
-    // @include respond(phone-first);
-    // height: auto;
-    // width: 90%;
+    padding: 8px;
+    padding-top: 0;
+    position: relative;
   }
 }
+
+// <ul class='list'>
+//   <li class='item-1'>
+//   <li class='item-2'>
+//   <li class='item-3'>
+// </ul>
+
+// .list {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: end;
+//   max-height: 30rem
+// }
+
+// .item-1 {
+//   margin-bottom: auto;
+//   max-height: 10rem
+// }
+
+// .item-2{
+//   max-height: 10rem
+// }
+// .item-3{
+//   max-height: 10rem
+// }

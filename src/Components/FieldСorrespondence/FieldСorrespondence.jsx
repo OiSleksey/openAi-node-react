@@ -1,17 +1,16 @@
-import React, { useState, useEffect, createRef, memo } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { animateScroll as scroll } from 'react-scroll';
 import { connect } from 'react-redux';
 import './FieldСorrespondence.scss';
-import {
-  replyFromChat,
-  isPostLastMessage,
-  arrPostGetMessage,
-} from '../../redux/selectors/chatWithAi.selector';
-import { canEnterRequest } from '../../redux/actions/chatWithOpenAi.actions';
+import { arrPostGetMessage } from '../../redux/selectors/chatWithAi.selector';
+import { correspodenceHeightSelector } from '../../redux/selectors/heightCorrespodence.selector';
+import { correspodenceHeight } from '../../redux/actions/heightComponents.actions';
 import PostMessage from '../PostMessage/PostMessage';
 import GetMessage from '../GetMessage/GetMessage';
 
-const FieldСorrespondence = ({ isMessage, arrMesseges }) => {
+const FieldСorrespondence = ({ arrMesseges, correspodenceHeight }) => {
+  const myRef = useRef();
+
   const scrollToBottom = () => {
     scroll.scrollToBottom({
       duration: 500,
@@ -20,6 +19,12 @@ const FieldСorrespondence = ({ isMessage, arrMesseges }) => {
       containerId: 'scroll-container',
     });
   };
+
+  useEffect(() => {
+    if (myRef.current) {
+      myRef.current.style.maxHeight = `${correspodenceHeight}px`;
+    }
+  }, [correspodenceHeight]);
 
   useEffect(() => {
     scrollToBottom();
@@ -46,11 +51,12 @@ const FieldСorrespondence = ({ isMessage, arrMesseges }) => {
     : null;
 
   return (
-    <div className="field-coresspodence mb-2">
+    <div className="field-coresspodence">
       <div
         className="field-coresspodence__body msg-cotainer"
         style={styleBody}
         id="scroll-container"
+        ref={myRef}
       >
         {items}
       </div>
@@ -60,16 +66,12 @@ const FieldСorrespondence = ({ isMessage, arrMesseges }) => {
 
 const mapState = state => {
   return {
-    // replyMessage: replyFromChat(state),
-    // isMessage: isPostLastMessage(state),
+    correspodenceHeight: correspodenceHeightSelector(state),
     arrMesseges: arrPostGetMessage(state),
   };
 };
-// const mapDispatch = {
-//   setEnterText: canEnterRequest,
-// };
 
-export default connect(mapState, null)(FieldСorrespondence);
+export default connect(mapState)(FieldСorrespondence);
 // function propsAreEqual(prevProps, nextProps) {
 //   const boolValue = prevProps.arrMesseges === nextProps.arrMesseges;
 //   return boolValue;
@@ -145,3 +147,12 @@ export default connect(mapState, null)(FieldСorrespondence);
 // useEffect(() => {
 //   scrollToPosition();
 // }, [arrMesseges]);
+
+// через стили установил єлементу "max-height: 30rem;"
+// console.log(myRef.current.height) //
+// console.log( correspodenceHeight) //
+// myRef.current.height= correspodenceHeight;
+// console.log(myRef.current.height); //
+// console.log(correspodenceHeight); //
+
+// max-height так и остался 30rem
