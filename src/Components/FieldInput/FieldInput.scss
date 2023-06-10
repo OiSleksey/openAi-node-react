@@ -4,19 +4,42 @@
   //   width: 90%;
   &__form-box {
     background-color: #5fd9c2;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
   }
   &__textarea {
     flex: 0 0 90%;
+    max-height: 11rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 1rem;
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      background-color: #5fd9c2;
+      margin: 0.5rem 0;
+    }
+    &::-webkit-scrollbar {
+      width: 1rem;
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: #f2e205;
+      background-color: #fef13a;
+    }
     & textarea {
       font-size: 1.5rem;
       border-radius: 0.6rem;
       width: 100%;
       // max-height: 20rem;
       // height: 2.4rem;
-      overflow-y: hidden;
+      overflow: hidden;
       // white-space: pre-wrap;
       resize: none;
+      border-color: transparent;
+      outline: 0;
     }
   }
   &__submit {
@@ -31,11 +54,11 @@
     }
   }
 }
-.field-for-user {
-  //   /* Заборона зміни розміру вводу */
-  //   white-space: pre-wrap; /* Дозволяє перенос рядків та збільшує висоту */
-  //   overflow: hidden; /* Ховає зайвий текст, якщо він не поміщається */
-}
+// .field-for-user {
+//   //   /* Заборона зміни розміру вводу */
+//   //   white-space: pre-wrap; /* Дозволяє перенос рядків та збільшує висоту */
+//   //   overflow: hidden; /* Ховає зайвий текст, якщо він не поміщається */
+// }
 
-.btn-submit {
-}
+// .btn-submit {
+// }

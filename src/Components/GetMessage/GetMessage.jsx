@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './GetMessage.scss';
 // import { replyFromChat } from '../../redux/selectors/chatWithAi.selector';
 
-const GetMessage = ({ replyMessage, reply }) => {
+const GetMessage = ({ replyMessage, reply, time }) => {
   // if (!reply) return null;
   // console.log(reply);
   return (
@@ -16,7 +16,7 @@ const GetMessage = ({ replyMessage, reply }) => {
       </div>
       <div className="msg-get__content">
         {reply ? reply : 'Loading...'}
-        <span className="msg-get__time">8:40 AM, Today</span>
+        <span className="msg-get__time">{time}</span>
       </div>
     </div>
   );

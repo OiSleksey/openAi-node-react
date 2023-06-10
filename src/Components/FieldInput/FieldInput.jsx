@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import './FieldInput.scss';
-import { postOpenAiDispatch } from '../../redux/middleware/postChatThunk';
+import { openAiDispatch } from '../../redux/middleware/postChatThunk';
 import { replyFromChat } from '../../redux/selectors/chatWithAi.selector';
 
 const FieldInput = ({ postMessage, replyMessage, canEnterMessage }) => {
@@ -29,7 +29,7 @@ const FieldInput = ({ postMessage, replyMessage, canEnterMessage }) => {
   const minTextereaHeight = e => {
     const form = e.target;
     const textarea = form.querySelector('textarea');
-    textarea.style.height = '4.38rem';
+    textarea.style.height = '3.24rem';
   };
 
   const classBtn = canEnterMessage
@@ -49,7 +49,7 @@ const FieldInput = ({ postMessage, replyMessage, canEnterMessage }) => {
             <textarea
               value={message}
               onChange={handleChange}
-              className="me-1  p-3 form-control"
+              className="me-1  py-2  px-3 form-control"
               onInput={adjuctTextareaHeight}
               rows="1"
               placeholder="Enter your message"
@@ -72,7 +72,7 @@ const mapState = state => {
   };
 };
 const mapDispatch = {
-  postMessage: postOpenAiDispatch,
+  postMessage: openAiDispatch,
 };
 
 export default connect(mapState, mapDispatch)(FieldInput);

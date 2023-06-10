@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import './FieldСorrespondence.scss';
 import {
   replyFromChat,
-  isPostMessage,
+  isPostLastMessage,
   arrPostGetMessage,
 } from '../../redux/selectors/chatWithAi.selector';
 import { canEnterRequest } from '../../redux/actions/chatWithOpenAi.actions';
@@ -14,7 +14,7 @@ import GetMessage from '../GetMessage/GetMessage';
 const FieldСorrespondence = ({ isMessage, arrMesseges }) => {
   const scrollToBottom = () => {
     scroll.scrollToBottom({
-      duration: 1000,
+      duration: 500,
       delay: 100,
       smooth: 'easeInOutQuart',
       containerId: 'scroll-container',
@@ -27,17 +27,38 @@ const FieldСorrespondence = ({ isMessage, arrMesseges }) => {
 
   const styleBody = arrMesseges ? { padding: '10px' } : { padding: '0' };
 
+  const valueCheck = (value, index, number) => {
+    if (!value || !value[index] || !value[index][number]) return null;
+
+    return value[index][number];
+  };
+  // console.log(arrMesseges);
   const items = arrMesseges
     ? arrMesseges.map((element, index) => {
         return (
+          // <div key={index}>
+          //   <PostMessage
+          //     key={index}
+          //     question={valueCheck(valueCheck(element, 0, 0))}
+          //     time={valueCheck(valueCheck(element, 0, 1))}
+          //   />
+          //   <GetMessage
+          //     key={index + 1}
+          //     reply={valueCheck(valueCheck(element, 1, 0))}
+          //     time={valueCheck(valueCheck(element, 1, 1 ))}
+          //   />
+          // </div>
+          // return (
           <div key={index}>
             <PostMessage
               key={index}
-              question={element[0] ? element[0] : null}
+              question={element.question}
+              time={element.questinData}
             />
             <GetMessage
               key={index + 1}
-              reply={element[1] ? element[1] : null}
+              reply={element.reply}
+              time={element.replyData}
             />
           </div>
         );
@@ -45,7 +66,7 @@ const FieldСorrespondence = ({ isMessage, arrMesseges }) => {
     : null;
 
   return (
-    <div className="field-coresspodence mb-3">
+    <div className="field-coresspodence mb-2">
       <div
         className="field-coresspodence__body msg-cotainer"
         style={styleBody}
@@ -60,7 +81,7 @@ const FieldСorrespondence = ({ isMessage, arrMesseges }) => {
 const mapState = state => {
   return {
     // replyMessage: replyFromChat(state),
-    isMessage: isPostMessage(state),
+    // isMessage: isPostLastMessage(state),
     arrMesseges: arrPostGetMessage(state),
   };
 };
@@ -68,15 +89,15 @@ const mapState = state => {
 //   setEnterText: canEnterRequest,
 // };
 
-// export default connect(mapState, mapDispatch)(FieldСorrespondence);
-function propsAreEqual(prevProps, nextProps) {
-  const boolValue = prevProps.arrMesseges === nextProps.arrMesseges;
-  return boolValue;
-}
-export default connect(
-  mapState,
-  null
-)(memo(FieldСorrespondence, propsAreEqual));
+export default connect(mapState, null)(FieldСorrespondence);
+// function propsAreEqual(prevProps, nextProps) {
+//   const boolValue = prevProps.arrMesseges === nextProps.arrMesseges;
+//   return boolValue;
+// }
+// export default connect(
+//   mapState,
+//   null
+// )(memo(FieldСorrespondence, propsAreEqual));
 
 {
   /* <p>

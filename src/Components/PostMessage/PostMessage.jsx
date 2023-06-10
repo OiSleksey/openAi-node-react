@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import './PostMessage.scss';
-import {
-  replyFromChat,
-  questionToChat,
-} from '../../redux/selectors/chatWithAi.selector';
+import // replyFromChat,
+// questionToChat,
+'../../redux/selectors/chatWithAi.selector';
 
-const PostMessage = ({ questionMessage, question }) => {
+const PostMessage = ({ questionMessage, question, time }) => {
   //   if (!question) return null;
   //   console.log(question);
   return (
     <div className="d-flex justify-content-end mb-5 msg-post">
       <div className="msg-post__content">
-        {question}
-        <span className="msg-post__time">8:55 AM, Today</span>
+        {question ? question : 'Loading...'}
+        <span className="msg-post__time">{time}</span>
       </div>
       <div className="user__img-cont">
         <img
@@ -28,7 +27,7 @@ const PostMessage = ({ questionMessage, question }) => {
 const mapState = state => {
   return {
     //   replyMessage: replyFromChat(state),
-    questionMessage: questionToChat(state),
+    // questionMessage: questionToChat(state),
     //   isMessage: isPostMessage(state),
   };
 };
@@ -37,3 +36,7 @@ const mapState = state => {
 // };
 
 export default connect(mapState, null)(PostMessage);
+
+// 18:55, Today;
+// 18:55, Yesterday;
+// 18:55, 03.05.2022;

@@ -2,11 +2,15 @@ import {
   QUESTION_FOR_CHAT,
   REPLY_FROM_CHAT,
   CAN_ENTER_TEXT,
+  DATE_QUESTION_FOR_CHAT,
+  DATE_REPLY_FROM_CHAT,
 } from '../actions/chatWithOpenAi.actions';
 
 const initialState = {
   questions: [],
   replies: [],
+  dateQuestions: [],
+  dateReplies: [],
   canEnterMessage: true,
 };
 
@@ -24,6 +28,20 @@ export const chatReducer = (state = initialState, action) => {
       return {
         ...state,
         replies: newReply,
+      };
+    }
+    case DATE_QUESTION_FOR_CHAT: {
+      const newQuestion = state.dateQuestions.concat(action.payload.data);
+      return {
+        ...state,
+        dateQuestions: newQuestion,
+      };
+    }
+    case DATE_REPLY_FROM_CHAT: {
+      const newReply = state.dateReplies.concat(action.payload.data);
+      return {
+        ...state,
+        dateReplies: newReply,
       };
     }
     case CAN_ENTER_TEXT: {
