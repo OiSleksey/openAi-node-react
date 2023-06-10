@@ -45,7 +45,9 @@ const getDateMessage = value => {
 };
 
 const getDataDateNow = () => {
-  const dateNow = new Date('2023-06-07T20:26:43.517Z');
+  const dateNow = new Date();
+  // const dateNow = new Date('2023-06-07T20:26:43.517Z');
+
   const dataDateNow = setDateObj(dateNow);
   return dataDateNow;
 };

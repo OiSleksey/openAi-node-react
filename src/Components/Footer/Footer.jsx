@@ -11,7 +11,7 @@ const Footer = () => {
         </h5>
         <h5 className="footer-cont__about">
           Write to the e-mail address of
-          <a href="#"> Kryvonogy Oleksiy</a>
+          <a href="mailto:schokk8193@gmail.com"> Oleksii</a>
         </h5>
       </div>
     </footer>

@@ -1,4 +1,4 @@
-import React, { createRef, useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { styled } from '@mui/material/styles';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordion from '@mui/material/Accordion';
@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import './Accordion.scss';
 import { accordionHeight } from '../../redux/actions/heightComponents.actions';
 import { connect } from 'react-redux';
+import SampleQuestions from '../SampleQuestions/SampleQuestions';
 
 const Accordion = styled(props => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -86,12 +87,7 @@ const CustomizedAccordions = ({ getAccordionHeight }) => {
           <Typography>Sample questions to get you started</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
-            lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
+          <SampleQuestions />
         </AccordionDetails>
       </Accordion>
     </div>

@@ -1,6 +1,7 @@
 // Express
 const OpenAI = require('openai');
 const { Configuration, OpenAIApi } = OpenAI;
+require('dotenv').config();
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -10,8 +11,8 @@ const port = 4001;
 
 const configuration = new Configuration({
   // //Mary dont work
-  organization: 'org-RJYbTUf6vlD3w2wvEOss99Y0',
-  apiKey: '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',
+  organization: process.env.ORG,
+  apiKey: process.env.API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
