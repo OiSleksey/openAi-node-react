@@ -21,7 +21,7 @@ const configuration = new Configuration({
 
   // //Mary dont work
   organization: 'org-RJYbTUf6vlD3w2wvEOss99Y0',
-  apiKey: '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',
+  apiKey: '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',
 });
 const openai = new OpenAIApi(configuration);
 

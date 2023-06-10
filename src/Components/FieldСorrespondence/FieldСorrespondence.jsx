@@ -26,34 +26,14 @@ const FieldСorrespondence = ({ isMessage, arrMesseges }) => {
   }, [arrMesseges]);
 
   const styleBody = arrMesseges ? { padding: '10px' } : { padding: '0' };
-
-  const valueCheck = (value, index, number) => {
-    if (!value || !value[index] || !value[index][number]) return null;
-
-    return value[index][number];
-  };
-  // console.log(arrMesseges);
   const items = arrMesseges
     ? arrMesseges.map((element, index) => {
         return (
-          // <div key={index}>
-          //   <PostMessage
-          //     key={index}
-          //     question={valueCheck(valueCheck(element, 0, 0))}
-          //     time={valueCheck(valueCheck(element, 0, 1))}
-          //   />
-          //   <GetMessage
-          //     key={index + 1}
-          //     reply={valueCheck(valueCheck(element, 1, 0))}
-          //     time={valueCheck(valueCheck(element, 1, 1 ))}
-          //   />
-          // </div>
-          // return (
           <div key={index}>
             <PostMessage
               key={index}
               question={element.question}
-              time={element.questinData}
+              time={element.questionData}
             />
             <GetMessage
               key={index + 1}

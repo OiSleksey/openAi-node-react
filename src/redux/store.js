@@ -4,8 +4,21 @@ import {
   applyMiddleware,
   compose,
 } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 import { chatReducer } from './reducers/chatWithOpenAi.reducer';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+// import rootReducer from './reducers'
 
 const allReducers = combineReducers({
   chatWithAi: chatReducer,
@@ -17,10 +30,29 @@ const allReducers = combineReducers({
   // partWeather: selectedPartOfDayReducer,
 });
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const persistConfig = {
+  key: 'root',
+  storage,
+};
 
-const store = createStore(
-  allReducers,
-  composeEnhancers(applyMiddleware(thunk))
-);
+const persistedReducer = persistReducer(persistConfig, allReducers);
+
+const store = configureStore({
+  reducer: persistedReducer,
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+});
+
+export const persistor = persistStore(store);
+
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+// const store = createStore(
+//   allReducers,
+//   composeEnhancers(applyMiddleware(thunk))
+// );
 export default store;
