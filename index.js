@@ -9,19 +9,9 @@ const app = express();
 const port = 4001;
 
 const configuration = new Configuration({
-  // //Work
-  // organization: "org-BwaZ1QM1osA9yzqg0uQ9QgDy",
-  // apiKey:
-  // "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",
-
-  // // //Oleksii dont work
-  // organization: "org-Efy1j2bjO1wZ1hGLLPVuYFUV",
-  // apiKey:
-  // "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",
-
   // //Mary dont work
   organization: 'org-RJYbTUf6vlD3w2wvEOss99Y0',
-  apiKey: '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',
+  apiKey: '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',
 });
 const openai = new OpenAIApi(configuration);
 
@@ -62,8 +52,3 @@ app.listen(port, () => {
 // organization: "org-BwaZ1QM1osA9yzqg0uQ9QgDy",
 // apiKey:
 // "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",
-
-////My dont work
-// organization: "org-Efy1j2bjO1wZ1hGLLPVuYFUV",
-// apiKey:
-// "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",

@@ -7,11 +7,17 @@ export const openAiDispatch = message => {
     dispatch(actions.canEnterRequest(false));
     dispatch(actions.questionForChat(message));
     dispatch(actions.dateQuestionForChat(getDateCurrency()));
-    postRequest(message).then(data => {
-      dispatch(actions.replyFromChat(data));
-      dispatch(actions.canEnterRequest(true));
-      dispatch(actions.dateReplyFromChat(getDateCurrency()));
-    });
+    postRequest(message)
+      .then(data => {
+        dispatch(actions.replyFromChat(data));
+        dispatch(actions.canEnterRequest(true));
+        dispatch(actions.dateReplyFromChat(getDateCurrency()));
+      })
+      .catch(data => {
+        dispatch(actions.replyFromChat(data));
+        dispatch(actions.canEnterRequest(true));
+        dispatch(actions.dateReplyFromChat(getDateCurrency()));
+      });
   };
 };
 
