@@ -14,13 +14,13 @@ html {
     font-size: 50%;
   }
   @include respond(tab-port-second) {
-    font-size: 40%;
+    font-size: 45%;
   }
   @include respond(tab-port-third) {
     font-size: 35%;
   }
   @include respond(phone-first) {
-    font-size: 55%;
+    font-size: 65%;
   }
   // @include respond(phone-second)
   //     font-size: 30%
@@ -29,14 +29,13 @@ html {
 body {
   min-height: 100%;
   --bs-body-font-family: 'Roboto', sans-serif;
-  background-color: $background-body;
-  background: $background-linear-body;
+  background-color: $background-body !important;
+  color: $color-body;
 }
 
 .container {
   @include flex-Vcenter-Hcenter;
   &__main {
-    // padding: 10rem 0;
     font-size: 2rem;
     min-height: 100vh;
     // max-width: 79.4rem;
@@ -47,45 +46,5 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-    // z-index: 4;
   }
 }
-
-// .app {
-//   text-align: center;
-// }
-
-// .app-logo {
-//   height: 40vmin;
-//   pointer-events: none;
-// }
-
-// @media (prefers-reduced-motion: no-preference) {
-//   .app-logo {
-//     animation: app-logo-spin infinite 20s linear;
-//   }
-// }
-
-// .app-header {
-//   background-color: #282c34;
-//   min-height: 100vh;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   font-size: calc(10px + 2vmin);
-//   color: white;
-// }
-
-// .app-link {
-//   color: #61dafb;
-// }
-
-// @keyframes app-logo-spin {
-//   from {
-//     transform: rotate(0deg);
-//   }
-//   to {
-//     transform: rotate(360deg);
-//   }
-// }

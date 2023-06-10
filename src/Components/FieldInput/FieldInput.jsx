@@ -17,7 +17,6 @@ const FieldInput = ({ postMessage, canEnterMessage, getInputHeight }) => {
     if (myRef.current) {
       resizeObserver.observe(myRef.current);
     }
-
     return () => {
       resizeObserver.disconnect();
     };
@@ -56,7 +55,7 @@ const FieldInput = ({ postMessage, canEnterMessage, getInputHeight }) => {
     : 'btn field-input__btn-submit field-input__btn-submit_active';
 
   return (
-    <div className="field-input " onChange={changeHeight} ref={myRef}>
+    <div className="field-input " ref={myRef}>
       <form onSubmit={handleSubmit}>
         <div className="field-input__form-box d-flex justify-content-end">
           <div className="field-input__textarea ">

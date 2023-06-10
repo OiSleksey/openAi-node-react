@@ -10,7 +10,6 @@ const app = express();
 const port = 4001;
 
 const configuration = new Configuration({
-  // //Mary dont work
   organization: process.env.ORG,
   apiKey: process.env.API_KEY,
 });

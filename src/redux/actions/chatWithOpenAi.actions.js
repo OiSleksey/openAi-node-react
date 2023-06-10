@@ -1,5 +1,3 @@
-// import { getDateCurrency } from '../../api/postOpenAi.js';
-
 export const QUESTION_FOR_CHAT = 'QUESTION_FOR_CHAT';
 export const REPLY_FROM_CHAT = 'REPLY_FROM_CHAT';
 export const DATE_QUESTION_FOR_CHAT = 'DATE_QUESTION_FOR_CHAT';
@@ -50,9 +48,3 @@ export const canEnterRequest = data => {
     },
   };
 };
-
-// export const getTimeDateNow = () => {
-//   return function (dispatch) {
-//     dispatch(questionForChat(getDateCurrency()));
-//   };
-// };

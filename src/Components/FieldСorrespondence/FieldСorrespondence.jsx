@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import './FieldСorrespondence.scss';
 import { arrPostGetMessage } from '../../redux/selectors/chatWithAi.selector';
 import { correspodenceHeightSelector } from '../../redux/selectors/heightCorrespodence.selector';
-import { correspodenceHeight } from '../../redux/actions/heightComponents.actions';
 import PostMessage from '../PostMessage/PostMessage';
 import GetMessage from '../GetMessage/GetMessage';
 

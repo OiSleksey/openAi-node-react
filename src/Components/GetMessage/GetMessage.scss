@@ -1,10 +1,12 @@
+@import '../../sass/variables/colors';
 .msg-get {
   &__content {
     margin-top: auto;
     margin-bottom: auto;
-    margin-left: 10px;
-    border-radius: 25px;
-    background-color: #82ccdd;
+    margin-left: 1rem;
+    border-radius: 2.5rem;
+    background-color: $background-get-message;
+    color: $color-get-message;
     padding: 0.8rem 2rem;
     position: relative;
     font-size: 1.5rem;
@@ -12,8 +14,7 @@
   &__time {
     position: absolute;
     left: 0;
-    bottom: -15px;
-    color: rgba(255, 255, 255, 0.5);
+    bottom: -1.5rem;
     color: black;
     font-size: 1rem;
     display: flex;

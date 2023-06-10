@@ -2,6 +2,8 @@ import axios from 'axios';
 
 const url = 'http://localhost:4001/';
 
+//With server
+
 export const postRequest = async message => {
   try {
     console.log(message);
@@ -21,6 +23,8 @@ export const postRequest = async message => {
     return 'Sorry. An error occurred on the server. We are working on it. Please try again later.';
   }
 };
+
+//Without server
 
 // export const postRequest = message => {
 //   return new Promise(function (res, rej) {
@@ -42,6 +46,3 @@ export const postRequest = async message => {
 //     );
 //   });
 // };
-
-// const postmessage = await postRequest('Hello');
-// console.log(postmessage);

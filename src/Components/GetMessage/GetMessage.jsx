@@ -1,19 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import './GetMessage.scss';
 import Loading from '../Loading/Loading';
-// import { replyFromChat } from '../../redux/selectors/chatWithAi.selector';
+import avatarAi from '../../images/avatar-ai.png';
 
-const GetMessage = ({ replyMessage, reply, time }) => {
-  // if (!reply) return null;
-  // console.log(reply);
+const GetMessage = ({ reply, time }) => {
   return (
     <div className="d-flex justify-content-start mb-5 msg-get">
       <div className="user__img-cont">
-        <img
-          src="https://storage.somehow.com/o%2Fpage%252Fopenai%252Favatar%3Falt%3Dmedia%26token%3D4a9c8041-6e60-4f29-a55b-2c209b76aceb"
-          className="rounded-circle user__img"
-        />
+        <img src={avatarAi} className="rounded-circle user__img" />
       </div>
       <div className="msg-get__content">
         {reply ? reply : <Loading />}

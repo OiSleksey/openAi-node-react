@@ -10,26 +10,19 @@ const SampleQuestions = ({ canEnterMessage, postMessage }) => {
     if (!canEnterMessage) return;
     const message = e.target.textContent;
     postMessage(message);
-    console.log(message);
-
-    // const trimMessage = message.trim();
-    // if (trimMessage === '' || !canEnterMessage) return;
-    // minTextereaHeight(e);
-    // postMessage(trimMessage);
-    // setMessage('');
   };
 
   return (
     <div className="sample-qiestion">
       <ul className="sample-qiestion__list">
         <li className="sample-qiestion__item" onClick={handleClick}>
-          Question 1
+          How to start running training?
         </li>
         <li className="sample-qiestion__item" onClick={handleClick}>
-          Question 2
+          What is cadence?
         </li>
         <li className="sample-qiestion__item" onClick={handleClick}>
-          Question 3
+          What warm-up should be done before running?
         </li>
       </ul>
     </div>

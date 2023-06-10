@@ -11,7 +11,5 @@ export const correspodenceHeightSelector = state => {
   const heightInput = state.heightComponents.input;
   const heightCorrespodence =
     heightChat - heightAccordion - heightInput - 10 - 16;
-  //   console.log(heightCorrespodence);
   return heightCorrespodence;
 };
-// !state.heightComponents.correspodence

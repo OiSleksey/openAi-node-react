@@ -1,56 +1,43 @@
-// .field-corespodence {
-//   background-color: aquamarine;
-//   background-color: rgba(0, 0, 0, 0.4) !important;
-//   background: #7f7fd5;
-//   background: -webkit-linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
-//   background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
-//   height: 500px;
-// }
-
+@import '../../sass/variables/colors';
 .field-coresspodence {
-  border-radius: 15px;
-  background-color: rgba(240, 240, 240, 0.4);
-  margin: 5px 0;
+  border-radius: 1.5rem;
+  background-color: $background-field-correspodence;
+  margin: 0 0 7px 0;
   &__body {
-    // background: rgb(52, 197, 107);
-    // flex: 1 0;
     overflow-y: auto;
     max-height: 30rem;
-    // min-height: 10rem;
     margin-right: 0.7rem;
     padding: 1rem;
-
-    // transition: all 1.5s ease-out 1s;
-
     &::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-      border-radius: 10px;
-      background-color: #5fd9c2;
+      -webkit-box-shadow: $box-shadow-field-correspodence-scrollbar-track;
+      border-radius: 1rem;
+      background-color: $background-field-correspodence-scrollbar-track;
       margin: 2rem 0;
     }
     &::-webkit-scrollbar {
       width: 1rem;
-      background-color: transparent;
+      background-color: $background-field-correspodence-scrollbar;
     }
 
     &::-webkit-scrollbar-thumb {
-      border-radius: 10px;
-      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-      background-color: #f2e205;
-      background-color: #fef13a;
+      outline: $outline-field-correspodence-scrollbar-thumb;
+      border-radius: 1rem;
+      -webkit-box-shadow: $box-shadow-field-correspodence-scrollbar-thumb;
+      background-color: $background-field-correspodence-scrollbar-thumb;
     }
   }
 }
 
 .user__img-cont {
-  height: 40px;
-  width: 40px;
+  height: 4rem;
+  width: 4rem;
 }
 
 .user__img {
-  height: 40px;
-  width: 40px;
-  border: 1.5px solid #f5f6fa;
+  height: 4rem;
+  width: 4rem;
+  border: 1px solid $border-field-correspodence-img;
+  background-color: $background-field-correspodence-img;
 }
 
 // @media (max-width: 576px) {

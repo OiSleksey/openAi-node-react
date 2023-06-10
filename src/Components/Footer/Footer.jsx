@@ -10,8 +10,10 @@ const Footer = () => {
           questions or suggestions?
         </h5>
         <h5 className="footer-cont__about">
-          Write to the e-mail address of
-          <a href="mailto:schokk8193@gmail.com"> Oleksii</a>
+          Write to the e-mail address of{' '}
+          <a className="footer-cont__link" href="mailto:schokk8193@gmail.com">
+            Oleksii
+          </a>
         </h5>
       </div>
     </footer>

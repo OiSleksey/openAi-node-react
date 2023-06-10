@@ -1,27 +1,3 @@
-// export const replyFromChat = state => {
-//   if (!state || !state.chatWithAi || !state.chatWithAi.replies) return null;
-//   const arrReplies = state.chatWithAi.replies;
-//   const lastReplyMessage = arrReplies[arrReplies.length - 1];
-//   //   console.log(lastReplyMessage);
-//   return lastReplyMessage;
-// };
-
-// export const questionToChat = state => {
-//   if (!state || !state.chatWithAi || !state.chatWithAi.questions) return null;
-//   const arrQuestions = state.chatWithAi.questions;
-//   const lastQuestionMessage = arrQuestions[arrQuestions.length - 1];
-//   //   console.log(lastReplyMessage);
-//   return lastQuestionMessage;
-// };
-
-// export const isPostLastMessage = state => {
-//   if (!state || !state.chatWithAi || !state.chatWithAi.questions) return null;
-//   const arrQuestions = state.chatWithAi.questions;
-//   const isMessage = arrQuestions.length < 1 ? false : true;
-//   //   console.log(lastReplyMessage);
-//   // console.log(isMessage);
-//   return isMessage;
-// };
 const setDateObj = valueDate => {
   const minute = valueDate.getMinutes();
   const hour = valueDate.getHours();
@@ -47,7 +23,6 @@ const getDateMessage = value => {
 const getDataDateNow = () => {
   const dateNow = new Date();
   // const dateNow = new Date('2023-06-07T20:26:43.517Z');
-
   const dataDateNow = setDateObj(dateNow);
   return dataDateNow;
 };
@@ -117,30 +92,3 @@ export const arrPostGetMessage = state => {
   }));
   return allArr;
 };
-
-// //Вот данные которые тебе нужно обработать
-// const arrQuestions = ['q1', 'q2', 'q3'];
-// const arrReplies = ['r1', 'r2', 'r3'];
-// const arrDateQuestios = ['dq1', 'dq2', 'dq3'];
-// const arrDateReplies = ['dr1', 'dr2', 'dr3'];
-// //Вот так должно получиться
-// const allArr = [
-//   {
-//     question: 'q1',
-//     questionData: 'dq1',
-//     reply: 'r1',
-//     replyData: 'rd1',
-//   },
-//   {
-//     question: 'q2',
-//     questionData: 'dq2',
-//     reply: 'r2',
-//     replyData: 'rd2',
-//   },
-//   {
-//     question: 'q3',
-//     questionData: 'dq3',
-//     reply: 'r3',
-//     replyData: 'rd3',
-//   },
-// ];
