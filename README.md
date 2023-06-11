@@ -41,10 +41,4 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ### `npm run server`
 
 Runs the localhost server and handle Open-AI API request
-Open [http://localhost:3005](http://localhost:3005) to view it in your browser.
-
-### `npm run live`
-
-Runs simultaneously commands "server" + "start" \
-Provided via lib "concurrently" \
-You can find more about it [npmjs.com/package/concurrently](https://www.npmjs.com/package/concurrently)
+Open [http://localhost:4001](http://localhost:4001) to view it in your browser.

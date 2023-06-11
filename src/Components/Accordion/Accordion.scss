@@ -1,33 +1,26 @@
 @import '../../sass/variables/colors';
-.css-1betqn-MuiAccordionSummary-content {
+.MuiAccordionSummary-content {
   margin: 0.5rem !important;
 }
 
-.css-t922vh-MuiButtonBase-root-MuiAccordionSummary-root {
+.MuiAccordionSummary-root {
   min-height: 1rem !important;
 }
 
-.css-1d9exis-MuiButtonBase-root-MuiAccordionSummary-root {
+.MuiAccordionSummary-root {
   background: $background-accordion-title !important;
   color: $color-accordion-title !important;
 }
 
-.css-ahj2mt-MuiTypography-root {
+.MuiTypography-root {
   font-size: 1.5rem !important;
 }
 
-.css-ahj2mt-MuiTypography-root {
-  font-size: 1.5rem;
-}
-
-.css-1sryx56-MuiAccordionDetails-root {
-  padding: 0.8rem 1.6rem !important;
-}
-.css-1d9exis-MuiButtonBase-root-MuiAccordionSummary-root {
+.MuiAccordionSummary {
   padding: 0.3rem 1.6rem !important;
   min-height: 1rem !important;
 }
 
-.css-1kz2u5b-MuiAccordionDetails-root {
+.MuiAccordionDetails-root {
   background-color: $background-accordion-panel !important;
 }
