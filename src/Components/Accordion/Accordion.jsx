@@ -9,6 +9,7 @@ import './Accordion.scss';
 import { accordionHeight } from '../../redux/actions/heightComponents.actions';
 import { connect } from 'react-redux';
 import SampleQuestions from '../SampleQuestions/SampleQuestions';
+import { stateAccordion } from '../../redux/actions/chatWithOpenAi.actions';
 
 const Accordion = styled(props => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -50,7 +51,11 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderRadius: '1rem',
 }));
 
-const CustomizedAccordions = ({ getAccordionHeight }) => {
+const CustomizedAccordions = ({
+  setStateAccordion,
+  getAccordionHeight,
+  expandedAccordion,
+}) => {
   const myRef = useRef(null);
 
   const changeHeight = () => {
@@ -68,17 +73,15 @@ const CustomizedAccordions = ({ getAccordionHeight }) => {
     };
   }, []);
 
-  const [expanded, setExpanded] = useState('panel1');
-
   const handleChange = panel => (event, newExpanded) => {
-    setExpanded(newExpanded ? panel : false);
+    setStateAccordion(newExpanded);
   };
 
   return (
     <div ref={myRef}>
       <Accordion
         style={{ margin: '0px' }}
-        expanded={expanded === 'panel1'}
+        expanded={expandedAccordion}
         onChange={handleChange('panel1')}
       >
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
@@ -92,11 +95,18 @@ const CustomizedAccordions = ({ getAccordionHeight }) => {
   );
 };
 
-const mapDispatch = {
-  getAccordionHeight: accordionHeight,
+const mapState = state => {
+  return {
+    expandedAccordion: state.chatWithAi.openAccordion,
+  };
 };
 
-export default connect(null, mapDispatch)(CustomizedAccordions);
+const mapDispatch = {
+  getAccordionHeight: accordionHeight,
+  setStateAccordion: stateAccordion,
+};
+
+export default connect(mapState, mapDispatch)(CustomizedAccordions);
 {
   /* <Accordion
         expanded={expanded === 'panel2'}

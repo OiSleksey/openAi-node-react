@@ -4,6 +4,7 @@ import {
   CAN_ENTER_TEXT,
   DATE_QUESTION_FOR_CHAT,
   DATE_REPLY_FROM_CHAT,
+  STATE_ACCORDION,
 } from '../actions/chatWithOpenAi.actions';
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   dateQuestions: [],
   dateReplies: [],
   canEnterMessage: true,
+  openAccordion: true,
 };
 
 export const chatReducer = (state = initialState, action) => {
@@ -48,6 +50,12 @@ export const chatReducer = (state = initialState, action) => {
       return {
         ...state,
         canEnterMessage: action.payload.data,
+      };
+    }
+    case STATE_ACCORDION: {
+      return {
+        ...state,
+        openAccordion: action.payload.data,
       };
     }
     default:

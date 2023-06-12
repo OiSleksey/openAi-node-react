@@ -3,6 +3,7 @@ export const REPLY_FROM_CHAT = 'REPLY_FROM_CHAT';
 export const DATE_QUESTION_FOR_CHAT = 'DATE_QUESTION_FOR_CHAT';
 export const DATE_REPLY_FROM_CHAT = 'DATE_REPLY_FROM_CHAT';
 export const CAN_ENTER_TEXT = 'CAN_I_ENTER_TEXT';
+export const STATE_ACCORDION = 'STATE_ACCORDION';
 
 export const questionForChat = data => {
   return {
@@ -43,6 +44,15 @@ export const dateReplyFromChat = data => {
 export const canEnterRequest = data => {
   return {
     type: CAN_ENTER_TEXT,
+    payload: {
+      data,
+    },
+  };
+};
+
+export const stateAccordion = data => {
+  return {
+    type: STATE_ACCORDION,
     payload: {
       data,
     },

@@ -3,11 +3,17 @@ import './SampleQuestions.scss';
 import { inputHeight } from '../../redux/actions/heightComponents.actions';
 import { connect } from 'react-redux';
 import { openAiDispatch } from '../../redux/middleware/postChatThunk';
+import { stateAccordion } from '../../redux/actions/chatWithOpenAi.actions';
 
-const SampleQuestions = ({ canEnterMessage, postMessage }) => {
+const SampleQuestions = ({
+  canEnterMessage,
+  postMessage,
+  setStateAccordion,
+}) => {
   const handleClick = e => {
     e.preventDefault();
     if (!canEnterMessage) return;
+    setStateAccordion(false);
     const message = e.target.textContent;
     postMessage(message);
   };
@@ -37,6 +43,7 @@ const mapState = state => {
 const mapDispatch = {
   getInputHeight: inputHeight,
   postMessage: openAiDispatch,
+  setStateAccordion: stateAccordion,
 };
 
 export default connect(mapState, mapDispatch)(SampleQuestions);
